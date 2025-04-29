@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - BNM & Co</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+
+  <!-- Header/Navbar Start -->
+  <header class="bg-white bg-opacity-70 backdrop-blur-md shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <img src="/assets/images/0ed9ef92-cc62-4c4c-8eb3-af84db6e39ad.png" alt="Logo" class="w-25 h-10 rounded-full">
+        <span class="text-xl font-bold text-[#0e2463]"></span>
+      </div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-[#0e2463] font-medium">About</a>
+        <a href="services.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Services</a>
+        <a href="testimonials.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Testimonials</a>
+        <a href="contact.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Contact</a>
+      </nav>
+
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+      <a href="index.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Home</a>
+      <a href="about.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">About</a>
+      <a href="services.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Services</a>
+      <a href="testimonials.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Testimonials</a>
+      <a href="contact.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Contact</a>
+    </div>
+  </header>
+
+  <section class="py-16 bg-white text-center" data-aos="fade-up">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Get in Touch With BNM & Co</h2>
+      <p class="text-lg text-gray-700 mb-8">We're here to answer your questions and discuss how our services can benefit you. Please fill out the form below or use the contact details provided.</p>
+    </div>
+  </section>
+
+  <footer class="bg-[#0e2463] text-white py-10">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8" data-aos="fade-up">
+      <div>
+        <h2 class="text-xl font-bold">BNM & Co</h2>
+        <p class="mt-2 text-sm">Your Finances, Our Priority</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Company</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="about.html" class="hover:underline">About Us</a></li>
+          <li><a href="#" class="hover:underline">Our Team</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Resources</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="#" class="hover:underline">Blog</a></li>
+          <li><a href="#" class="hover:underline">Webinars</a></li>
+          <li><a href="#" class="hover:underline">Guides</a></li>
+        </ul>
+      </div>
+      <div id="contact">
+        <h3 class="text-lg font-semibold mb-2">Contact Us</h3>
+        <form class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-white">Name</label>
+            <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-white">Email</label>
+            <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-white">Message</label>
+            <textarea id="message" name="message" rows="3" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+          </div>
+          <button type="submit" class="bg-white text-[#0e2463] font-semibold px-6 py-3 rounded-full hover:bg-gray-200 transition">Send Message</button>
+        </form>
+        <div class="mt-4">
+          <h4 class="font-semibold text-sm mb-1">Or reach us at:</h4>
+          <p>Address :- Pipra Complex,Karnibagh,B.Deoghar,814112</p>
+          <p>Email:-cabnm.co@gmail.com</p>
+          <p>Ph:- +91 9431157980</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Initialize AOS
+    AOS.init({
+      duration: 1200, // Animation duration
+      easing: 'ease-in-out', // Animation easing
+      once: true, // Whether animation should happen only once
+    });
+  </script>
+
+</body>
+</html>

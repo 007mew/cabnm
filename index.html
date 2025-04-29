@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BNM & Co – Trusted Financial Partner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+
+  <style>
+    .feed-container {
+    max-width: 600px;
+    height: 300px;
+    overflow: hidden;
+    border: 2px solid #0077cc;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 0 auto;
+}
+
+#feed {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+    animation: scrollUp 1000s linear infinite;
+}
+
+#feed li {
+    margin-bottom: 20px;
+}
+
+#feed a {
+    font-size: 1.05em;
+    font-weight: bold;
+    color: #0077cc;
+    text-decoration: none;
+}
+
+#feed a:hover {
+    text-decoration: underline;
+}
+
+#feed p {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+    @keyframes scrollUp {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-100%); }
+}
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out;
+    }
+  </style>
+  <style>
+    /* Glassmorphism effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+      border-radius: 10px;
+      backdrop-filter: blur(15px); /* Apply blur to the background */
+      padding: 10px 20px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Adding some styling for the navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+    }
+    
+    .navbar .nav-link {
+      padding: 10px 20px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .navbar .nav-link:hover {
+      color: #4FD1C5; /* Hover effect color */
+    }
+  </style>
+  <head>
+    <style>
+      .counter {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #0e2463;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+  
+      .text-lg {
+        font-size: 1.25rem;
+        font-weight: normal;
+        color: #4a4a4a;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  
+</head>
+<body class="bg-[#f5f5f5] text-gray-800 flex flex-col min-h-screen">
+
+
+    <header class="bg-white/30 backdrop-blur-md shadow-md sticky top-0 z-50 border-b border-white/40">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+          <img src="/assets/images/0ed9ef92-cc62-4c4c-8eb3-af84db6e39ad.png" alt="Logo" class="w-25 h-10 rounded-full">
+          <span class="text-xl font-bold text-[#0e2463]"></span>
+        </div>
+  
+        <nav class="hidden md:flex space-x-6">
+          <a href="index.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-[#0e2463] font-medium">About</a>
+          <a href="services.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Services</a>
+          <a href="testimonials.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Testimonials</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Contact</a>
+        </nav>
+  
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+  
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+      <a href="index.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Home</a>
+      <a href="about.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">About</a>
+      <a href="services.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Services</a>
+      <a href="testimonials.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Testimonials</a>
+      <a href="contact.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Contact</a>
+    </div>
+  </header>
+
+  <section class="relative bg-[#0e2463] text-white py-20 text-center animate__animated animate__fadeIn" data-aos="fade-up">
+    <div class="absolute inset-0">
+      <img src="/assets/images/output.jpg" alt="Financial Growth" class="w-full h-full object-cover opacity-70">
+    </div>
+    <div class="max-w-3xl mx-auto px-4 relative z-10 animate-fadeIn">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Your Trusted Financial Partner</h1>
+      <p class="text-lg mb-8">Let BNM&Co guide you through complex financial landscapes, ensuring compliance and maximizing your success with expert chartered accounting services.</p>
+      <a href="contact.html" class="inline-block bg-white text-[#0e2463] font-semibold px-6 py-3 rounded-full hover:bg-gray-200 transition">Get Started</a>
+    </div>
+  </section>
+
+  
+
+  
+
+  <section id="live-updates" class="py-16 bg-white" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-8">📰 Latest CA, GST & Tax Updates</h2>
+      <div class="feed-container" style="margin: 0 auto; overflow: hidden; border: 2px solid #0077cc; border-radius: 8px; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 600px; height: 300px;">
+        <ul id="feed" style="list-style-type: none; padding: 10px; margin: 0; animation: scrollUp 30s linear infinite;">
+          <!-- News will be injected here -->
+        </ul>
+      </div>
+  
+      <h2 class="text-2xl font-bold mt-12 mb-6">🌟 Top Important News</h2>
+      <div class="top-news-container" style="max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <ul id="top-news" style="list-style-type: none; padding: 0;">
+          <!-- Top news will be injected here -->
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Add scripts at the bottom of body -->
+  <script>
+      const rssFeeds = [
+          'https://taxguru.in/feed',
+          'https://www.taxreturnwala.com/feed/',
+          'https://www.caclubindia.com/rss/latest_news.asp',
+          'https://www.business-standard.com/rss/latest-news.rss'
+      ];
+      const feedContainer = document.getElementById('feed');
+      rssFeeds.forEach(feedUrl => {
+          const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+          fetch(apiUrl)
+              .then(response => response.json())
+              .then(data => {
+                  data.items.slice(0, 50).forEach(item => {
+                      const listItem = document.createElement('li');
+                      const link = document.createElement('a');
+                      link.href = item.link;
+                      link.target = '_blank';
+                      link.textContent = item.title;
+                      const description = document.createElement('p');
+                      description.innerHTML = item.description.substring(0, 100) + '...';
+                      listItem.appendChild(link);
+                      listItem.appendChild(description);
+                      feedContainer.appendChild(listItem);
+                  });
+              })
+              .catch(error => {
+                  console.error('Error fetching feed:', error);
+              });
+      });
+  
+      const topNewsFeed = 'https://taxguru.in/feed';
+      const topNewsContainer = document.getElementById('top-news');
+      const topApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(topNewsFeed)}`;
+      fetch(topApiUrl)
+          .then(response => response.json())
+          .then(data => {
+              data.items.slice(0, 50).forEach(item => {
+                  const listItem = document.createElement('li');
+                  const link = document.createElement('a');
+                  link.href = item.link;
+                  link.target = '_blank';
+                  link.style.fontSize = '1.2em';
+                  link.style.fontWeight = 'bold';
+                  link.style.color = '#333';
+                  link.style.textDecoration = 'none';
+                  link.textContent = item.title;
+                  link.addEventListener('mouseover', () => link.style.color = '#0777cc');
+                  link.addEventListener('mouseout', () => link.style.color = '#333');
+                  listItem.appendChild(link);
+                  listItem.style.marginBottom = '20px';
+                  topNewsContainer.appendChild(listItem);
+              });
+          })
+          .catch(error => {
+              console.error('Error fetching top news:', error);
+              topNewsContainer.innerHTML = '<li>Failed to load top news.</li>';
+          });
+  </script>
+  
+  <section id="achievements" class="py-16 bg-gray-100 glass text-center" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8">Our Achievements</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="achievement-item">
+          <div class="counter" id="clientsCounter">0</div>
+          <p class="text-lg text-gray-700 mt-2">Happy Clients</p>
+        </div>
+        <div class="achievement-item">
+          <div class="counter" id="projectsCounter">0</div>
+          <p class="text-lg text-gray-700 mt-2">Completed Projects</p>
+        </div>
+        <div class="achievement-item">
+          <div class="counter" id="yearsCounter">0</div>
+          <p class="text-lg text-gray-700 mt-2">Years of Experience</p>
+        </div>
+        <div class="achievement-item">
+          <div class="counter" id="awardsCounter">0</div>
+          <p class="text-lg text-gray-700 mt-2">Awards Won</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="testimonials" class="py-16 bg-gray-100" data-aos="fade-up">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-8">What Our Clients Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md border animate-fadeIn" data-aos="fade-up">
+          <p class="text-gray-700 mb-4 italic">"BNM & Co has been an invaluable partner for our business. Their expertise and guidance have helped us navigate complex financial challenges with ease. We highly recommend their services."</p>
+          <p class="font-semibold text-gray-800">- John Doe, CEO of Example Corp</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md border animate-fadeIn" data-aos="fade-up" data-aos-delay="100">
+          <p class="text-gray-700 mb-4 italic">"The team at BNM & Co is professional, knowledgeable, and always responsive to our needs. Their attention to detail and commitment to client satisfaction are truly commendable."</p>
+          <p class="font-semibold text-gray-800">- Jane Smith, Founder of Another Business</p>
+        </div>
+        <!more testimonials here >
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white text-center" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-4">Take Control of Your Finances Today</h2>
+    <p class="text-gray-700 mb-6">Let our expert team guide you with clarity and confidence.</p>
+    <a href="#contact" class="bg-[#0e2463] text-white px-6 py-3 rounded-full hover:bg-blue-900 transition">Contact Us</a>
+  </section>
+  <footer class="bg-gray-900 backdrop-blur-md text-white py-12">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12" data-aos="fade-up">
+      
+      <!-- Logo and Social -->
+      <div class="space-y-4 text-left">
+        <h2 class="text-2xl font-bold">BNM & Co</h2>
+        <p class="text-sm opacity-80">Your Finances, Our Priority</p>
+        
+        <!-- Social Icons -->
+        <div class="flex space-x-4 md:justify-start sm:justify-start justify-center pt-2">
+          <a href="https://www.facebook.com/bnmishraca/" class="text-gray-400 hover:text-white transform hover:scale-110 transition">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transform hover:scale-110 transition">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transform hover:scale-110 transition">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transform hover:scale-110 transition">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+  
+      <!-- Company Links -->
+      <div class="space-y-3 text-center">
+        <h3 class="text-lg font-semibold text-gray-300">Company</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:underline hover:text-gray-300 transition">About Us</a></li>
+          <li><a href="#" class="hover:underline hover:text-gray-300 transition">Our Team</a></li>
+          <li><a href="contact.html" class="hover:underline hover:text-gray-300 transition">Contact</a></li>
+        </ul>
+      </div>
+  
+      <!-- Resources Links -->
+      <div class="space-y-3 text-center">
+        <h3 class="text-lg font-semibold text-gray-300">Resources</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:underline hover:text-gray-300 transition">Blog</a></li>
+          <li><a href="#" class="hover:underline hover:text-gray-300 transition">Webinars</a></li>
+          <li><a href="#" class="hover:underline hover:text-gray-300 transition">Guides</a></li>
+        </ul>
+      </div>
+  
+    </div>
+  
+    <!-- Divider -->
+    <div class="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
+      &copy; 2025 <strong>BNM&Co.</strong> All rights reserved.
+    </div>
+  </footer>
+  
+
+
+  <script>
+    // Counter Animation
+    let clientsCounter = document.getElementById('clientsCounter');
+    let projectsCounter = document.getElementById('projectsCounter');
+    let yearsCounter = document.getElementById('yearsCounter');
+    let awardsCounter = document.getElementById('awardsCounter');
+
+    const incrementCounter = (counter, target, duration) => {
+      let current = 0;
+      const increment = target / duration;
+
+      const interval = setInterval(() => {
+        current += increment;
+        counter.innerText = Math.round(current);
+        if (current >= target) {
+          clearInterval(interval);
+          counter.innerText = target;
+        }
+      }, 1);
+    };
+
+    window.onload = () => {
+      incrementCounter(clientsCounter, 1200, 1000); // Example target
+      incrementCounter(projectsCounter, 450, 1000);
+      incrementCounter(yearsCounter, 10, 1000);
+      incrementCounter(awardsCounter, 15, 1000);
+    };
+
+    // Initialize AOS
+    AOS.init({
+      duration: 1000, // Animation duration
+      easing: 'ease-in-out', // Animation easing
+      once: true, // Whether animation should happen only once
+    });
+  </script> 
+
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Initialize AOS
+    AOS.init({
+      duration: 1200, // Animation duration
+      easing: 'ease-in-out', // Animation easing
+      once: true, // Whether animation should happen only once
+    });
+  </script>
+
+</body>
+</html>

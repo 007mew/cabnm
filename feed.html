@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live CA Updates - Tax & GST News</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .feed-container {
+            width: 100%;
+            max-width: 600px;
+            height: 300px; /* Fixed height for scrolling box */
+            margin: 0 auto;
+            overflow: hidden;
+            border: 2px solid #0077cc;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        ul#feed {
+            list-style-type: none;
+            padding: 10px;
+            margin: 0;
+            animation: scrollUp 30s linear infinite;
+        }
+        ul#feed li {
+            margin-bottom: 20px;
+        }
+        a {
+            font-size: 1.05em;
+            font-weight: bold;
+            color: #0077cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        p {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        /* Animation to scroll up */
+        @keyframes scrollUp {
+            0% { transform: translateY(0%); }
+            100% { transform: translateY(-100%); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📰 Latest CA, GST & Tax Updates</h1>
+
+    <div class="feed-container">
+        <ul id="feed">
+            <!-- News will be injected here -->
+        </ul>
+    </div>
+
+    <script>
+        // List of RSS feeds you want to fetch
+        const rssFeeds = [
+            'https://taxguru.in/feed',
+            'https://www.taxreturnwala.com/feed/',
+            'https://www.caclubindia.com/rss/latest_news.asp',
+            'https://www.business-standard.com/rss/latest-news.rss'
+        ];
+
+        const feedContainer = document.getElementById('feed');
+
+        // Fetch each RSS feed
+        rssFeeds.forEach(feedUrl => {
+            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+            
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    data.items.slice(0, 50).forEach(item => { // Fetch top 50 items from each source
+                        const listItem = document.createElement('li');
+
+                        const link = document.createElement('a');
+                        link.href = item.link;
+                        link.target = '_blank';
+                        link.textContent = item.title;
+
+                        
+
+                        const description = document.createElement('p');
+                        description.innerHTML = item.description.substring(0, 100) + '...'; // Shortened description
+
+                        listItem.appendChild(link);
+                        listItem.appendChild(description);
+                        feedContainer.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching feed:', error);
+                });
+        });
+    </script>
+    <h2 style="text-align:center; margin-top:50px;">🌟 Top Important News</h2>
+
+    <div class="top-news-container" style="max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <ul id="top-news" style="list-style-type: none; padding: 0;">
+            <!-- Top news will be injected here -->
+        </ul>
+    </div>
+    
+    <script>
+        // Single Top News RSS Feed (or multiple if you want)
+        const topNewsFeed = 'https://taxguru.in/feed'; // You can change to any other feed
+    
+        const topNewsContainer = document.getElementById('top-news');
+    
+        const topApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(topNewsFeed)}`;
+    
+        fetch(topApiUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Only pick 5 Top News items
+                data.items.slice(0, 5).forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.style.marginBottom = '20px';
+    
+                    const link = document.createElement('a');
+                    link.href = item.link;
+                    link.target = '_blank';
+                    link.style.fontSize = '1.2em';
+                    link.style.fontWeight = 'bold';
+                    link.style.color = '#333';
+                    link.style.textDecoration = 'none';
+                    link.textContent = item.title;
+    
+                    link.addEventListener('mouseover', () => link.style.color = '#0777cc');
+                    link.addEventListener('mouseout', () => link.style.color = '#333');
+    
+                    listItem.appendChild(link);
+                    topNewsContainer.appendChild(listItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching top news:', error);
+                topNewsContainer.innerHTML = '<li>Failed to load top news.</li>';
+            });
+    </script>
+    
+
+</body>
+</html>
