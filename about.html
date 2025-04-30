@@ -1,33 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page Title | BNM & Co</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css"> <!-- optional custom css -->
-</head>
-<body class="bg-white text-gray-800 flex flex-col min-h-screen">
-
-  <!-- Header/Navbar Start -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - BNM & Co</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   
-  <header class="bg-white/30 backdrop-blur-md shadow-md sticky top-0 z-50 border-b border-white/40">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <img src="/assets/images/0ed9ef92-cc62-4c4c-8eb3-af84db6e39ad.png" alt="Logo" class="w-25 h-10 rounded-full">
-        <span class="text-xl font-bold text-[#0e2463]"></span>
+  <link rel="stylesheet" href="styles.css"> 
+
+  <style>
+    
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out;
+    }
+    /* Custom color definition for easier use */
+    .text-brand-blue { color: #0e2463; }
+    .bg-brand-blue { background-color: #0e2463; }
+    .hover\:text-brand-blue:hover { color: #0e2463; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+  <header class="bg-white bg-opacity-80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <img src="assets/images/logo.png" alt="Logo" class="w-50 h-20 rounded-full ">
       </div>
+      <nav 
+    class="hidden md:flex space-x-2 winky-rough-regular">
+    <a href="index.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Home</a>
+    <a href="about.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">About</a>
+    <a href="services.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Services</a>
+    <a href="testimonials.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Testimonials</a>
+    <a href="contact.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Contact</a>
+    <a href="blog.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold   
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Blog</a>
 
-      <nav class="hidden md:flex space-x-6">
-        <a href="index.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Home</a>
-        <a href="about.html" class="text-gray-700 hover:text-[#0e2463] font-medium">About</a>
-        <a href="services.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Services</a>
-        <a href="testimonials.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Testimonials</a>
-        <a href="contact.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Contact</a>
-      </nav>
-
+  </nav>
       <div class="md:hidden">
-        <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+        <button id="menu-toggle" class="text-gray-600 focus:outline-none hover:text-brand-blue transition duration-300 ease-in-out">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 6h16M4 12h16M4 18h16"/>
@@ -36,46 +68,165 @@
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-      <a href="index.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Home</a>
-      <a href="about.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">About</a>
-      <a href="services.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Services</a>
-      <a href="testimonials.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Testimonials</a>
-      <a href="contact.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Contact</a>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 bg-white shadow-md">
+      <a href="index.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Home</a>
+      <a href="about.html" class="block py-2 text-brand-blue font-semibold transition duration-300 ease-in-out">About</a>
+      <a href="services.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Services</a>
+      <a href="testimonials.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Testimonials</a>
+      <a href="contact.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Contact</a>
+      <a href="blog.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Blog</a>
     </div>
   </header>
-  <!-- Header/Navbar End -->
 
-  <!-- Main Content Start -->
-  <main class="flex-grow">
-    <section id="about" class="py-16 glass" data-aos="fade-up">
-      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h2 class="text-3xl font-bold mb-4">Why Choose BNM & Co?</h2>
-          <p class="text-lg text-gray-700 mb-6">We specialize in delivering tailored financial solutions. From audits to tax planning, we cover all your accounting needs with precision and integrity.</p>
-          <ul class="space-y-3 text-gray-600">
-            <li>✅ Chartered Accounting Expertise</li>
-            <li>✅ Transparent Financial Guidance</li>
-            <li>✅ Client-Centric Approach</li>
-          </ul>
+  <section class="py-16 lg:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12" data-aos="fade-up">
+              <h2 class="text-4xl font-extrabold tagesschrift-regular text-gray-900 mb-4">About BNM & Co</h2>
+              <p class="text-lg text-gray-700 max-w-3xl winky-rough-regular mx-auto">
+                  Learn about our history, mission, and the values that drive our firm.
+              </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center winky-rough-regular">
+              <div data-aos="fade-right">
+                  <h3 class="text-2xl font-semibold tagesschrift-regular text-gray-800 mb-4">Our Story</h3>
+                  <p class="text-gray-700 mb-4">
+                      Founded over 20 years ago in Deoghar, Jharkhand , BNM & Co. was established with a commitment to providing exceptional chartered accounting services based on integrity, expertise, and client-centricity. Over the years, we have grown and adapted to the evolving financial landscape, building strong relationships with our clients and helping them navigate complex financial challenges.
+                  </p>
+                  <p class="text-gray-700">
+                      We pride ourselves on our deep understanding of Indian financial regulations and our ability to provide tailored solutions that meet the unique needs of each client, from individuals to large corporations.
+                  </p>
+              </div>
+              <div data-aos="fade-left">
+                   <div class="bg-gray-200 h-64 md:h-80 rounded-lg flex items-center justify-center text-gray-500">
+                    <img src="/assets/images/ca bnm.jpg" alt="Financial Growth" class="w-full h-full object-cover opacity-100"> 
+                  </div>
+              </div>
+          </div>
+
+           <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16 winky-rough-regular">
+               <div data-aos="fade-right">
+                   <div class="bg-gray-200 h-64 md:h-80 rounded-lg flex items-center justify-center text-gray-500">
+                    <img src="/assets/images/cabnm_2.jfif" alt="Financial Growth" class="w-full h-full object-cover opacity-95"> 
+
+                  </div>
+               </div>
+              <div data-aos="fade-left">
+                  <h3 class="text-2xl font-semibold tagesschrift-regular text-gray-800 mb-4">Our Mission & Values</h3>
+                  <p class="text-gray-700 mb-4">
+                      Our mission is to empower our clients with the financial knowledge and support they need to achieve their goals. We strive to be more than just accountants; we aim to be trusted partners who contribute to your long-term success.
+                  </p>
+                  <p class="text-gray-700">
+                      Our core values include:
+                  </p>
+                  <ul class="list-disc list-inside text-gray-700 mt-4 space-y-2">
+                      <li>**Integrity:** Upholding the highest ethical standards in all our dealings.</li>
+                      <li>**Expertise:** Continuously enhancing our knowledge and skills to provide the best advice.</li>
+                      <li>**Client Focus:** Putting our clients' needs and success at the forefront of everything we do.</li>
+                      <li>**Innovation:** Embracing new technologies and approaches to deliver efficient services.</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="mt-16 text-center">
+               <h3 class="text-3xl font-bold tagesschrift-regular text-gray-900 mb-8" data-aos="fade-up">Meet Our Team</h3>
+               <p class="text-lg text-gray-700 max-w-3xl winky-rough-regular mx-auto mb-12" data-aos="fade-up" data-aos-delay="100">
+                   Our dedicated team of professionals is ready to assist you.
+               </p>
+               <div class="grid grid-cols-4 gap-8">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                  <img src="/ " alt="Photo of " class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+              
+                  <h4 class="text-xl font-semibold text-gray-900 mb-2 winky-rough-regular ">C.S Prakashanand Jha</h4>
+              
+                  <p class="text-brand-blue font-medium">[Title]</p>
+              
+                  <p class="text-gray-700 text-sm mt-3">[Brief Bio/Expertise]</p>
+              </div>
+              <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                <img src="/assets/images/sanjaymishra.jpeg" alt="Photo of Sanjay Mishra" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+            
+                <h4 class="text-xl font-semibold text-gray-900 mb-2 winky-rough-regular">Sanjay Mishra</h4>
+            
+                <p class="text-brand-blue font-medium">[Title]</p>
+            
+                <p class="text-gray-700 text-sm mt-3">[Brief Bio/Expertise]</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+              <img src="/assets/images/anupray.jpeg" alt="Photo of Anup Ray " class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+          
+              <h4 class="text-xl font-semibold text-gray-900 mb-2 winky-rough-regular">Anup Ray</h4>
+          
+              <p class="text-brand-blue font-medium">[Title]</p>
+          
+              <p class="text-gray-700 text-sm mt-3">[Brief Bio/Expertise]</p>
+          </div>
+          <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+            <img src="/assets/images/us.jpeg " alt="Photo of Uday Singh " class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+        
+            <h4 class="text-xl font-semibold text-gray-900 mb-2 winky-rough-regular">Uday Singh</h4>
+        
+            <p class="text-brand-blue font-medium">[Title]</p>
+        
+            <p class="text-gray-700 text-sm mt-3">[Brief Bio/Expertise]</p>
         </div>
-        <div>
-          <img src="/assets/images/team.jpg" alt="Our Team" class="rounded-lg shadow-md">
-        </div>
+                   </div>
+           </div>
+
       </div>
-    </section>
-  </main>
-  <!-- Main Content End -->
+  </section>
 
-  <!-- Footer Start -->
-  <footer class="bg-[#0e2463] text-white py-10">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-      <!-- Footer Content Here (use your fixed footer code) -->
+
+  <footer class="bg-black text-white py-4 lg:py-5 mt-auto winky-rough-regular">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12" data-aos="fade-up">
+      <div>
+        <h2 class="text-2xl font-bold mb-2 border-b border-blue-700 pb-1 inline-block">BNM & Co</h2>
+        <p class="mt-2 text-sm text-gray-300">Your Finances, Our Priority. Dedicated to providing expert financial guidance and services.</p>
+      </div>
+      <div>
+        <h3 class="text-lg text-white font-semibold mb-2 border-b border-blue-700 pb-1 inline-block">Company</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="about.html" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">About Us</a></li>
+          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Our Team</a></li>
+          <li><a href="contact.html" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg text-white font-semibold mb-2 border-b border-blue-700 pb-1 inline-block">Resources</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Blog</a></li>
+          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Webinars</a></li>
+          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Guides</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pt-4 text-center text-sm text-gray-400">
+      © 2025 BNM & Co. All rights reserved.
     </div>
   </footer>
-  <!-- Footer End -->
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-  <!-- Optional JS -->
-  <script src="assets/js/main.js"></script>
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    }
+
+    // Initialize AOS if the library is loaded
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 1000, // Animation duration slightly faster
+        easing: 'ease-in-out', // Animation easing
+        once: true, // Whether animation should happen only once
+      });
+    } else {
+      console.error('AOS library not loaded.');
+    }
+
+  </script>
+
 </body>
 </html>

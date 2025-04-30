@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page Title | BNM & Co</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css"> <!-- optional custom css -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services - BNM & Co</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css"> 
+
   <style>
+    /* Custom CSS for subtle animations and responsive iframe */
     @keyframes fadeIn {
       0% { opacity: 0; }
       100% { opacity: 1; }
@@ -14,26 +23,44 @@
     .animate-fadeIn {
       animation: fadeIn 1s ease-out;
     }
+    /* Custom color definition for easier use */
+    .text-brand-blue { color: #0e2463; }
+    .bg-brand-blue { background-color: #0e2463; }
+    .hover\:text-brand-blue:hover { color: #0e2463; }
   </style>
 </head>
-<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-  <!-- Header/Navbar Start -->
-  <header class="bg-white bg-opacity-70 backdrop-blur-md shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <img src="assets/images/0ed9ef92-cc62-4c4c-8eb3-af84db6e39ad.png" alt="Logo" class="w-25 h-10 rounded-full">
-        <span class="text-xl font-bold text-[#0e2463]"></span>
+  <header class="bg-white bg-opacity-80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <img src="assets/images/logo.png" alt="Logo" class="w-50 h-20 rounded-full ">
       </div>
-      <nav class="hidden md:flex space-x-6">
-        <a href="index.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Home</a>
-        <a href="about.html" class="text-gray-700 hover:text-[#0e2463] font-medium">About</a>
-        <a href="services.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Services</a>
-        <a href="testimonials.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Testimonials</a>
-        <a href="contact.html" class="text-gray-700 hover:text-[#0e2463] font-medium">Contact</a>
-      </nav>
+      <nav 
+    class="hidden md:flex space-x-2 winky-rough-regular">
+    <a href="index.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Home</a>
+    <a href="about.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">About</a>
+    <a href="services.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Services</a>
+    <a href="testimonials.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Testimonials</a>
+    <a href="contact.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Contact</a>
+    <a href="blog.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold   
+    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Blog</a>
+
+  </nav>
+
       <div class="md:hidden">
-        <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+        <button id="menu-toggle" class="text-gray-600 focus:outline-none hover:text-brand-blue transition duration-300 ease-in-out">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 6h16M4 12h16M4 18h16"/>
@@ -42,112 +69,160 @@
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-      <a href="index.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Home</a>
-      <a href="about.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">About</a>
-      <a href="services.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Services</a>
-      <a href="testimonials.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Testimonials</a>
-      <a href="contact.html" class="block py-2 text-gray-700 hover:text-[#0e2463] font-medium">Contact</a>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 bg-white shadow-md">
+      <a href="index.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Home</a>
+      <a href="about.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">About</a>
+      <a href="services.html" class="block py-2 text-brand-blue font-semibold transition duration-300 ease-in-out">Services</a>
+      <a href="testimonials.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Testimonials</a>
+      <a href="contact.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Contact</a>
+      <a href="blog.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Blog</a>
     </div>
   </header>
-  <!-- Header/Navbar End -->
 
-  <!-- Main Content Start -->
-  <main class="flex-grow">
-    <section id="services" class="py-16 bg-white" data-aos="fade-up">
-      <div class="max-w-6xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-8">Our Comprehensive Services</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="bg-gray-100 p-6 rounded-lg shadow-md border animate-fadeIn" data-aos="fade-up">
-            <svg class="w-12 h-12 mx-auto text-[#0e2463] mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/1000/svg" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17V11m0 5l-5-5M9 11l5 5m-12 1v2a2 2 0 002 2h16a2 2 0 002-2v-2m-2-2l-5-5m5 5l-5 5m-5-5l-5 5"></path>
-            </svg>
-            <h3 class="text-xl font-semibold mb-2 text-gray-800">Audit & Assurance</h3>
-            <p class="text-gray-600 text-sm">Independent examination and reporting to ensure financial transparency and compliance.</p>
+  <section class="py-16 lg:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12" data-aos="fade-up">
+              <h2 class="text-4xl font-extrabold text-gray-900 mb-4 tagesschrift-regular">Comprehensive Financial Services</h2>
+              <p class="text-lg text-gray-700 max-w-3xl mx-auto winky-rough-regular">
+                  We offer a wide range of expert chartered accounting services to meet your business and personal financial needs.
+              </p>
           </div>
-          <div class="bg-gray-100 p-6 rounded-lg shadow-md border animate-fadeIn" data-aos="fade-up" data-aos-delay="100">
-            <svg class="w-12 h-12 mx-auto text-[#0e2463] mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/1000/svg" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-            </svg>
-            <h3 class="text-xl font-semibold mb-2 text-gray-800">Taxation Services</h3>
-            <p class="text-gray-600 text-sm">Expert guidance on tax planning, compliance, and filing for individuals and businesses.</p>
-          </div>
-          <div class="bg-gray-100 p-6 rounded-lg shadow-md border animate-fadeIn" data-aos="fade-up" data-aos-delay="200">
-            <svg class="w-12 h-12 mx-auto text-[#0e2463] mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/1000/svg" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 4.75 7.5 5a9.972 9.972 0 00-3 6.328m3 0a9.972 9.972 0 013 6.328M8.25 9.828V10.5m-3-2.1c-2.472 0-4.556 1.007-6.232 2.944M18.5 16.912c2.472 0 4.556-1.007 6.232-2.944M15.75 13.472v-1.25M12 15.753l3-3M8.25 19.673V18m-3.101-8.7l-1.409-1.409m14.414 5.8l-1.409-1.409M8.25 10.5V5.25m-2.587.787l-2.645-2.645m10.595 10.5l-2.645-2.645m16.5 12l-3-3L21 15.753m-13.437-6.912l-2.949-2.949"></path>
-            </svg>
-            <h3 class="text-xl font-semibold mb-2 text-gray-800">Business Consulting</h3>
-            <p class="text-gray-600 text-sm">Strategic advice and solutions to help your business grow and achieve its objectives.</p>
-          </div>
-          <div class="bg-gray-100 p-6 rounded-lg shadow-md border animate-fadeIn" data-aos="fade-up" data-aos-delay="300">
-            <svg class="w-12 h-12 mx-auto text-[#0e2463] mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/1000/svg" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-            </svg>
-            <h3 class="text-xl font-semibold mb-2 text-gray-800">Financial Planning</h3>
-            <p class="text-gray-600 text-sm">Personalized financial plans to help you achieve your long-term financial goals.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <!-- Main Content End -->
 
-  <!-- Footer Start -->
-  <footer class="bg-gray-900 backdrop-blur-md text-white py-12">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12" data-aos="fade-up">
-      
-      <!-- Logo and Social -->
-      <div class="space-y-4 text-left">
-        <h2 class="text-2xl font-bold">BNM & Co</h2>
-        <p class="text-sm opacity-80">Your Finances, Our Priority</p>
-        
-        <!-- Social Icons -->
-        <div class="flex space-x-4 md:justify-start sm:justify-start justify-center pt-2">
-          <a href="https://www.facebook.com/bnmishraca/" class="text-gray-400 hover:text-white transform hover:scale-110 transition">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-white transform hover:scale-110 transition">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-white transform hover:scale-110 transition">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-white transform hover:scale-110 transition">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-        </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 tagesschrift-regular ">
+              <div data-aos="fade-right">
+                  <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b border-gray-300 pb-3 ">Taxation Services</h3>
+                  <ul class="space-y-4 text-gray-700">
+                      <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Business Taxation</h4>
+                          <p>Expert tax planning, compliance, and filing for various business structures.</p>
+                      </li>
+                      <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Individual Taxation</h4>
+                          <p>Personal tax planning, return preparation, and advisory services.</p>
+                      </li>
+                       <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">International Taxation / Expatriate Taxation</h4>
+                          <p>Specialized tax services for cross-border transactions and expatriates.</p>
+                      </li>
+                      
+                      </ul>
+              </div>
+
+              <div data-aos="fade-left">
+                  <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b border-gray-300 pb-3">Assurance & Compliance</h3>
+                   <ul class="space-y-4 text-gray-700">
+                      <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Auditing</h4>
+                          <p>Independent and thorough audits to ensure financial accuracy and transparency.</p>
+                      </li>
+                       <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Corporate Compliance</h4>
+                          <p>Ensuring adherence to company law and other regulatory requirements.</p>
+                      </li>
+                       <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">GST Compliance</h4>
+                          <p>Goods and Services Tax registration, filing, and advisory.</p>
+                      </li>
+                       <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Internal Audits</h4>
+                          <p>Evaluating and improving the effectiveness of risk management, control, and governance processes.</p>
+                      </li>
+                      </ul>
+              </div>
+
+              <div data-aos="fade-right" data-aos-delay="100">
+                  <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b border-gray-300 pb-3">Business Advisory</h3>
+                   <ul class="space-y-4 text-gray-700">
+                      <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Company Formation</h4>
+                          <p>Assistance with the process of setting up a new company in India.</p>
+                      </li>
+                       <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Foreign Investment Approvals</h4>
+                          <p>Guidance and support for obtaining necessary approvals for foreign investment.</p>
+                      </li>
+                       
+                       <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Business Planning & Strategy</h4>
+                          <p>Helping businesses develop sound financial plans and strategies for growth.</p>
+                      </li>
+                      </ul>
+              </div>
+
+               <div data-aos="fade-left" data-aos-delay="100">
+                  <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b border-gray-300 pb-3">Other Services</h3>
+                   <ul class="space-y-4 text-gray-700">
+                      <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Accounting & Bookkeeping</h4>
+                          <p>Maintaining accurate financial records and statements.</p>
+                      </li>
+                       <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Payroll Processing</h4>
+                          <p>Managing employee payroll accurately and on time.</p>
+                      </li>
+                       <li>
+                          <h4 class="text-xl font-medium text-gray-900 mb-1">Due Diligence</h4>
+                          <p>Comprehensive financial investigation for mergers, acquisitions, or investments.</p>
+                      </li>
+                      </ul>
+              </div>
+
+          </div>
       </div>
-  
-      <!-- Company Links -->
-      <div class="space-y-3 text-center">
-        <h3 class="text-lg font-semibold text-gray-300">Company</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:underline hover:text-gray-300 transition">About Us</a></li>
-          <li><a href="#" class="hover:underline hover:text-gray-300 transition">Our Team</a></li>
-          <li><a href="contact.html" class="hover:underline hover:text-gray-300 transition">Contact</a></li>
+  </section>
+
+
+  <footer class="bg-black text-white py-4 lg:py-5 mt-auto winky-rough-regular">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12" data-aos="fade-up">
+      <div>
+        <h2 class="text-2xl font-bold mb-2 border-b border-blue-700 pb-1 inline-block">BNM & Co</h2>
+        <p class="mt-2 text-sm text-gray-300">Your Finances, Our Priority. Dedicated to providing expert financial guidance and services.</p>
+      </div>
+      <div>
+        <h3 class="text-lg text-white font-semibold mb-2 border-b border-blue-700 pb-1 inline-block">Company</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="about.html" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">About Us</a></li>
+          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Our Team</a></li>
+          <li><a href="contact.html" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Contact</a></li>
         </ul>
       </div>
-  
-      <!-- Resources Links -->
-      <div class="space-y-3 text-center">
-        <h3 class="text-lg font-semibold text-gray-300">Resources</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:underline hover:text-gray-300 transition">Blog</a></li>
-          <li><a href="#" class="hover:underline hover:text-gray-300 transition">Webinars</a></li>
-          <li><a href="#" class="hover:underline hover:text-gray-300 transition">Guides</a></li>
+      <div>
+        <h3 class="text-lg text-white font-semibold mb-2 border-b border-blue-700 pb-1 inline-block">Resources</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Blog</a></li>
+          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Webinars</a></li>
+          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Guides</a></li>
         </ul>
       </div>
-  
     </div>
-  
-    <!-- Divider -->
-    <div class="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
-      &copy; 2025 <strong>BNM&Co.</strong> All rights reserved.
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pt-4 text-center text-sm text-gray-400">
+      © 2025 BNM & Co. All rights reserved.
     </div>
   </footer>
-  <!-- Footer End -->
 
-  <!-- Optional JS -->
-  <script src="assets/js/main.js"></script>
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    }
+
+    // Initialize AOS if the library is loaded
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 1000, // Animation duration slightly faster
+        easing: 'ease-in-out', // Animation easing
+        once: true, // Whether animation should happen only once
+      });
+    } else {
+      console.error('AOS library not loaded.');
+    }
+
+  </script>
+
 </body>
 </html>
