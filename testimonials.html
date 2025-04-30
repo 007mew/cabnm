@@ -11,8 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="styles.css"> 
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="styles.css">
 
   <style>
     /* Custom CSS for subtle animations and responsive iframe */
@@ -27,6 +29,38 @@
     .text-brand-blue { color: #0e2463; }
     .bg-brand-blue { background-color: #0e2463; }
     .hover\:text-brand-blue:hover { color: #0e2463; }
+
+    /* Custom Swiper styles (optional, adjust as needed) */
+    .testimonial-swiper {
+      width: 100%;
+      padding-bottom: 50px; /* Add padding for pagination */
+    }
+
+    .swiper-slide {
+      height: auto; /* Allow slides to adjust height based on content */
+      display: flex;
+      /* If you want slides to have equal height, set a fixed height or use align-items-stretch on swiper-wrapper */
+    }
+
+    .swiper-pagination-bullet {
+      background-color: #ccc; /* Default color for pagination dots */
+      opacity: 1;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: #0e2463; /* Active dot color using brand blue */
+    }
+
+    /* Ensure testimonial cards take full height within the slide if needed */
+    .swiper-slide > div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .swiper-slide > div > p:first-of-type {
+        flex-grow: 1; /* Makes the quote paragraph take available space */
+    }
+
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
@@ -36,28 +70,14 @@
       <div class="flex items-center space-x-3">
         <img src="assets/images/logo.png" alt="Logo" class="w-50 h-20 rounded-full ">
       </div>
-      <nav 
-    class="hidden md:flex space-x-2 winky-rough-regular">
-    <a href="index.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Home</a>
-    <a href="about.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">About</a>
-    <a href="services.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Services</a>
-    <a href="testimonials.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Testimonials</a>
-    <a href="contact.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Contact</a>
-    <a href="blog.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold   
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Blog</a>
-
-  </nav>
+      <nav class="hidden md:flex space-x-2 winky-rough-regular">
+        <a href="index.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300 shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Home</a>
+        <a href="about.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300 shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">About</a>
+        <a href="services.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300 shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Services</a>
+        <a href="testimonials.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-black-400 font-semibold bg-gray-200 transition-all duration-300 shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Testimonials</a>
+        <a href="contact.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300 shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Contact</a>
+        <a href="blog.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300 shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Blog</a>
+      </nav>
 
       <div class="md:hidden">
         <button id="menu-toggle" class="text-gray-600 focus:outline-none hover:text-brand-blue transition duration-300 ease-in-out">
@@ -88,87 +108,134 @@
               </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
-                <p class="text-gray-700 italic mb-6">
-                    "As a leading two-wheeler dealership, managing our finances efficiently is crucial. Your expertise in GST compliance and inventory management has been invaluable in streamlining our operations and ensuring smooth financial processes. We highly recommend your services."
-                </p>
-                <p class="font-semibold text-gray-900">- Mr. Amit Kumar</p>
-                <p class="text-sm text-gray-600">Proprietor, Auto Needs - TVS (2 Wheeler)</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
-                <p class="text-gray-700 italic mb-6">
-                    "We appreciate the proactive approach and insightful financial advice provided by your firm. Your guidance on optimizing our cash flow and handling complex transactions has significantly contributed to our growth in the competitive automobile market. A trustworthy partner indeed."
-                </p>
-                <p class="font-semibold text-gray-900">- Mr. Abhinav Kumar</p>
-                <p class="text-sm text-gray-600">Proprietor, Krishna Automobiles</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
-                <p class="text-gray-700 italic mb-6">
-                    "In the manufacturing sector, accurate cost accounting and financial planning are essential. Your team has consistently provided us with clear and comprehensive financial reports, helping us make informed decisions and improve our profitability. Your understanding of our industry is commendable."
-                </p>
-                <p class="font-semibold text-gray-900">- Mr. Ashok Kumar</p>
-                <p class="text-sm text-gray-600">Proprietor, Laxmi Industries (Plywood)</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="400">
-                <p class="text-gray-700 italic mb-6">
-                    "For a business like ours, built on trust and precision, meticulous financial record-keeping is paramount. Your firm has ensured our accounts are always in order, providing us with peace of mind and allowing us to focus on serving our customers with the finest jewellery. Your professionalism is truly appreciated."
-                </p>
-                <p class="font-semibold text-gray-900">- Mrs.Rinky Devi </p>
-                <p class="text-sm text-gray-600">Proprietor, Om Jewellers</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="500">
-                <p class="text-gray-700 italic mb-6">
-                    "Managing the finances for a network of schools requires a high level of organization and transparency. Your team has efficiently handled our accounting needs, ensuring compliance and providing clear financial oversight, which is crucial for our educational trust. We value your dedication and expertise."
-                </p>
-                <p class="font-semibold text-gray-900">- DAV CMC</p>
-                <p class="text-sm text-gray-600"> DAV College Managing Committee, Santhal Paragana</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="600">
-                <p class="text-gray-700 italic mb-6">
-                    "The petroleum industry demands strict adherence to regulations and precise financial management. Your firm has consistently provided us with reliable accounting services, helping us navigate tax requirements and maintain efficient financial operations. Your prompt and efficient service is a great asset."
-                </p>
-                <p class="font-semibold text-gray-900">- Mr. Rajesh Ranjan</p>
-                <p class="text-sm text-gray-600">Proprietor, Om Sai Fuel Station</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="700">
-                <p class="text-gray-700 italic mb-6">
-                    "As a healthcare provider, our priority is patient care. Your firm has taken the burden of complex financial management off our shoulders, ensuring accurate record-keeping and timely tax filings. This allows us to focus on providing critical medical services to the community. Your support is invaluable."
-                </p>
-                <p class="font-semibold text-gray-900">- Dr. Chandrakant</p>
-                <p class="text-sm text-gray-600">Proprietor, Deoghar Trauma Center</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="800">
-                <p class="text-gray-700 italic mb-6">
-                    "In the healthcare sector, financial accountability is paramount. Your chartered accountancy services have been instrumental in maintaining our financial health, providing us with clear insights into our financial performance and ensuring compliance with all regulatory requirements. We appreciate your meticulous attention to detail."
-                </p>
-                <p class="font-semibold text-gray-900">- Mrs. Renu Chaudhary</p>
-                <p class="text-sm text-gray-600">Proprietor, Shivlok Surgical Hospital</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="900">
-                <p class="text-gray-700 italic mb-6">
-                    "The real estate industry involves significant financial transactions and long-term investments. Your expertise in handling our project accounting, tax planning, and financial forecasting has been crucial for our growth and success. Your strategic financial advice has been particularly beneficial."
-                </p>
-                <p class="font-semibold text-gray-900">- Mr. Dileep Sharma</p>
-                <p class="text-sm text-gray-600">Managing Partner, Vijay Bharat Builders and Developers</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="1000">
-                <p class="text-gray-700 italic mb-6">
-                    "Efficient financial management is vital for a construction company like ours. Your firm has provided us with excellent support in managing our accounts, handling complex billing processes, and ensuring compliance. Your understanding of the construction industry's specific financial needs is highly valued."
-                </p>
-                <p class="font-semibold text-gray-900">- Mr. Raj Kumar</p>
-                <p class="text-sm text-gray-600">Director, Umesh and Manik Construction Private Limited</p>
-            </div>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="1100">
-                <p class="text-gray-700 italic mb-6">
-                    "Managing the finances for complex infrastructure projects like road and bridge construction requires specialized accounting knowledge. Your firm has demonstrated a strong understanding of project costing, revenue recognition based on the percentage of completion method, and compliance with government regulations specific to our industry. Your meticulous tracking of expenses and insightful financial reporting has been invaluable in keeping our projects on track and within budget. We appreciate your expertise in this niche sector."
-                </p>
-                <p class="font-semibold text-gray-900">- Mr. Umesh Singh</p>
-                <p class="text-sm text-gray-600">Partner, U and M Enterprises - Road and Bridge Construction</p>
-            </div>
-        </div>
+          <div class="swiper testimonial-swiper" data-aos="fade-up" data-aos-delay="100">
+              <div class="swiper-wrapper pb-8">
+                  <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "As a leading two-wheeler dealership, managing our finances efficiently is crucial. Your expertise in GST compliance and inventory management has been invaluable in streamlining our operations and ensuring smooth financial processes. We highly recommend your services."
+                          </p>
+                          <div>
+                              <p class="font-semibold text-gray-900">- Mr. Amit Kumar</p>
+                              <p class="text-sm text-gray-600">Proprietor, Auto Needs - TVS (2 Wheeler)</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "We appreciate the proactive approach and insightful financial advice provided by your firm. Your guidance on optimizing our cash flow and handling complex transactions has significantly contributed to our growth in the competitive automobile market. A trustworthy partner indeed."
+                          </p>
+                           <div>
+                              <p class="font-semibold text-gray-900">- Mr. Abhinav Kumar</p>
+                              <p class="text-sm text-gray-600">Proprietor, Krishna Automobiles</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "In the manufacturing sector, accurate cost accounting and financial planning are essential. Your team has consistently provided us with clear and comprehensive financial reports, helping us make informed decisions and improve our profitability. Your understanding of our industry is commendable."
+                          </p>
+                          <div>
+                              <p class="font-semibold text-gray-900">- Mr. Ashok Kumar</p>
+                              <p class="text-sm text-gray-600">Proprietor, Laxmi Industries (Plywood)</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "For a business like ours, built on trust and precision, meticulous financial record-keeping is paramount. Your firm has ensured our accounts are always in order, providing us with peace of mind and allowing us to focus on serving our customers with the finest jewellery. Your professionalism is truly appreciated."
+                          </p>
+                          <div>
+                              <p class="font-semibold text-gray-900">- Mrs.Rinky Devi </p>
+                              <p class="text-sm text-gray-600">Proprietor, Om Jewellers</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "Managing the finances for a network of schools requires a high level of organization and transparency. Your team has efficiently handled our accounting needs, ensuring compliance and providing clear financial oversight, which is crucial for our educational trust. We value your dedication and expertise."
+                          </p>
+                          <div>
+                              <p class="font-semibold text-gray-900">- DAV CMC</p>
+                              <p class="text-sm text-gray-600"> DAV College Managing Committee, Santhal Paragana</p>
+                          </div>
+                      </div>
+                  </div>
+                   <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "The petroleum industry demands strict adherence to regulations and precise financial management. Your firm has consistently provided us with reliable accounting services, helping us navigate tax requirements and maintain efficient financial operations. Your prompt and efficient service is a great asset."
+                          </p>
+                           <div>
+                              <p class="font-semibold text-gray-900">- Mr. Rajesh Ranjan</p>
+                              <p class="text-sm text-gray-600">Proprietor, Om Sai Fuel Station</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "As a healthcare provider, our priority is patient care. Your firm has taken the burden of complex financial management off our shoulders, ensuring accurate record-keeping and timely tax filings. This allows us to focus on providing critical medical services to the community. Your support is invaluable."
+                          </p>
+                           <div>
+                              <p class="font-semibold text-gray-900">- Dr. Chandrakant</p>
+                              <p class="text-sm text-gray-600">Proprietor, Deoghar Trauma Center</p>
+                          </div>
+                      </div>
+                  </div>
+                   <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "In the healthcare sector, financial accountability is paramount. Your chartered accountancy services have been instrumental in maintaining our financial health, providing us with clear insights into our financial performance and ensuring compliance with all regulatory requirements. We appreciate your meticulous attention to detail."
+                          </p>
+                           <div>
+                              <p class="font-semibold text-gray-900">- Mrs. Renu Chaudhary</p>
+                              <p class="text-sm text-gray-600">Proprietor, Shivlok Surgical Hospital</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "The real estate industry involves significant financial transactions and long-term investments. Your expertise in handling our project accounting, tax planning, and financial forecasting has been crucial for our growth and success. Your strategic financial advice has been particularly beneficial."
+                          </p>
+                          <div>
+                              <p class="font-semibold text-gray-900">- Mr. Dileep Sharma</p>
+                              <p class="text-sm text-gray-600">Managing Partner, Vijay Bharat Builders and Developers</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "Efficient financial management is vital for a construction company like ours. Your firm has provided us with excellent support in managing our accounts, handling complex billing processes, and ensuring compliance. Your understanding of the construction industry's specific financial needs is highly valued."
+                          </p>
+                          <div>
+                              <p class="font-semibold text-gray-900">- Mr. Raj Kumar</p>
+                              <p class="text-sm text-gray-600">Director, Umesh and Manik Construction Private Limited</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="swiper-slide">
+                      <div class="bg-gray-100 p-8 rounded-lg shadow-md flex flex-col h-full">
+                          <p class="text-gray-700 italic mb-6 flex-grow">
+                              "Managing the finances for complex infrastructure projects like road and bridge construction requires specialized accounting knowledge. Your firm has demonstrated a strong understanding of project costing, revenue recognition based on the percentage of completion method, and compliance with government regulations specific to our industry. Your meticulous tracking of expenses and insightful financial reporting has been invaluable in keeping our projects on track and within budget. We appreciate your expertise in this niche sector."
+                          </p>
+                          <div>
+                              <p class="font-semibold text-gray-900">- Mr. Umesh Singh</p>
+                              <p class="text-sm text-gray-600">Partner, U and M Enterprises - Road and Bridge Construction</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="swiper-pagination"></div>
 
-           <div class="text-center mt-12">
+              </div>
+          <div class="text-center mt-12">
               <p class="text-lg text-gray-700 winky-rough-regular">Want to share your experience? <a href="contact.html" class="text-brand-blue hover:underline font-medium">Contact us!</a></p>
           </div>
       </div>
@@ -199,9 +266,10 @@
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pt-4 text-center text-sm text-gray-400">
-      © 2025 BNM & Co. All rights reserved.
-    </div>
+      © 2025 BNM & Co. All rights reserved. </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
     // Mobile menu toggle
@@ -217,13 +285,56 @@
     // Initialize AOS if the library is loaded
     if (typeof AOS !== 'undefined') {
       AOS.init({
-        duration: 1000, // Animation duration slightly faster
+        duration: 800, // Adjusted duration slightly
         easing: 'ease-in-out', // Animation easing
         once: true, // Whether animation should happen only once
       });
     } else {
       console.error('AOS library not loaded.');
     }
+
+    // Initialize Swiper
+    const swiper = new Swiper('.testimonial-swiper', {
+        // Parameters
+        loop: true, // Enable continuous loop
+        autoplay: {
+            delay: 4000, // Delay between transitions (in ms), adjust as needed
+            disableOnInteraction: false, // Autoplay will not be disabled after user interactions (swipes)
+            pauseOnMouseEnter: true, // Pause autoplay when mouse enters swiper container
+        },
+        slidesPerView: 1, // Default slides per view (mobile)
+        spaceBetween: 24, // Space between slides (adjust gap)
+
+        // Responsive breakpoints
+        breakpoints: {
+            // when window width is >= 768px (Tailwind 'md')
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30
+            },
+            // when window width is >= 1024px (Tailwind 'lg')
+            // You could add another breakpoint for 3 slides if desired
+            // 1024: {
+            //   slidesPerView: 3,
+            //   spaceBetween: 30
+            // }
+        },
+
+        // Pagination
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true, // Allows clicking on pagination dots to navigate
+        },
+
+        // Optional: Navigation arrows
+        // navigation: {
+        //   nextEl: '.swiper-button-next',
+        //   prevEl: '.swiper-button-prev',
+        // },
+
+        // Optional: Makes slides adapt height if content varies significantly
+        // autoHeight: true,
+    });
 
   </script>
 
