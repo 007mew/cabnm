@@ -1,3 +1,10 @@
+
+.noto-sans-bold {
+  font-family: "Noto Sans HK", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 666;
+  font-style: normal;
+}
 .tagesschrift-regular {
   font-family: "Tagesschrift", system-ui;
   font-weight: 400;

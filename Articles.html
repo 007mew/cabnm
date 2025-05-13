@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Services - BNM & Co</title>
+  <title>Articles & News - BNM & Co</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-  
+   
   <link rel="stylesheet" href="styles.css"> 
 
   <style>
@@ -27,6 +27,9 @@
     .text-brand-blue { color: #0e2463; }
     .bg-brand-blue { background-color: #0e2463; }
     .hover\:text-brand-blue:hover { color: #0e2463; }
+
+    
+
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
@@ -59,7 +62,9 @@
 
   </nav>
 
-      <div class="md:hidden">
+      <div class="md:hidden flex items-center">
+        <button id="theme-toggle-mobile" class="text-gray-600 focus:outline-none hover:text-brand-blue transition duration-300 ease-in-out mr-4" aria-label="Toggle theme">
+             <i class="fas fa-moon text-xl"></i> </button>
         <button id="menu-toggle" class="text-gray-600 focus:outline-none hover:text-brand-blue transition duration-300 ease-in-out">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -72,101 +77,47 @@
     <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 bg-white shadow-md">
       <a href="index.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Home</a>
       <a href="about.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">About</a>
-      <a href="services.html" class="block py-2 text-brand-blue font-semibold transition duration-300 ease-in-out">Services</a>
+      <a href="services.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Services</a>
       <a href="testimonials.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Testimonials</a>
       <a href="contact.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Contact</a>
-      <a href="Articles.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Articles</a>
+      <a href="Articles.html" class="block py-2 text-brand-blue font-semibold transition duration-300 ease-in-out">Articles</a>
     </div>
   </header>
 
   <section class="py-16 lg:py-24 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 noto-sans-bold">
           <div class="text-center mb-12" data-aos="fade-up">
-              <h2 class="text-4xl font-extrabold text-gray-900 mb-4 noto-sans-bold">Comprehensive Financial Services</h2>
-              <p class="text-lg text-gray-700 max-w-3xl mx-auto winky-rough-regular">
-                  We offer a wide range of expert chartered accounting services to meet your business and personal financial needs.
+              <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Articles by B N Mishra</h2>
+              <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                  Stay updated with the latest financial news, insights, and updates from BNM & Co.
               </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 noto-sans-bold ">
-              <div data-aos="fade-right">
-                  <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b border-gray-300 pb-3 ">Taxation Services</h3>
-                  <ul class="space-y-4 text-gray-700">
-                      <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Business Taxation</h4>
-                          <p>Expert tax planning, compliance, and filing for various business structures.</p>
-                      </li>
-                      <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Individual Taxation</h4>
-                          <p>Personal tax planning, return preparation, and advisory services.</p>
-                      </li>
-                       <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">International Taxation / Expatriate Taxation</h4>
-                          <p>Specialized tax services for cross-border transactions and expatriates.</p>
-                      </li>
-                      
-                      </ul>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                  <div class="bg-gray-300 h-40 rounded-md mb-4"></div> <h3 class="text-xl font-semibold text-gray-900 mb-2">[Articles Post Title]</h3>
+                  <p class="text-sm text-gray-600 mb-3">Published on [Date]</p>
+                  <p class="text-gray-700 text-sm mb-4">[Brief excerpt of the Articles post content.]</p>
+                  <a href="#" class="text-brand-blue hover:underline font-medium">Read More &rarr;</a>
+              </div>
+               <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                  <div class="bg-gray-300 h-40 rounded-md mb-4"></div> <h3 class="text-xl font-semibold text-gray-900 mb-2">[Articles Post Title]</h3>
+                  <p class="text-sm text-gray-600 mb-3">Published on [Date]</p>
+                  <p class="text-gray-700 text-sm mb-4">[Brief excerpt of the Articles post content.]</p>
+                  <a href="#" class="text-brand-blue hover:underline font-medium">Read More &rarr;</a>
+              </div>
+               <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+                  <div class="bg-gray-300 h-40 rounded-md mb-4"></div> <h3 class="text-xl font-semibold text-gray-900 mb-2">[Articles Post Title]</h3>
+                  <p class="text-sm text-gray-600 mb-3">Published on [Date]</p>
+                  <p class="text-gray-700 text-sm mb-4">[Brief excerpt of the Articles post content.]</p>
+                  <a href="#" class="text-brand-blue hover:underline font-medium">Read More &rarr;</a>
+              </div>
               </div>
 
-              <div data-aos="fade-left">
-                  <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b border-gray-300 pb-3">Assurance & Compliance</h3>
-                   <ul class="space-y-4 text-gray-700">
-                      <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Auditing</h4>
-                          <p>Independent and thorough audits to ensure financial accuracy and transparency.</p>
-                      </li>
-                       <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Corporate Compliance</h4>
-                          <p>Ensuring adherence to company law and other regulatory requirements.</p>
-                      </li>
-                       <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">GST Compliance</h4>
-                          <p>Goods and Services Tax registration, filing, and advisory.</p>
-                      </li>
-                       <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Internal Audits</h4>
-                          <p>Evaluating and improving the effectiveness of risk management, control, and governance processes.</p>
-                      </li>
-                      </ul>
-              </div>
-
-              <div data-aos="fade-right" data-aos-delay="100">
-                  <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b border-gray-300 pb-3">Business Advisory</h3>
-                   <ul class="space-y-4 text-gray-700">
-                      <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Company Formation</h4>
-                          <p>Assistance with the process of setting up a new company in India.</p>
-                      </li>
-                       <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Foreign Investment Approvals</h4>
-                          <p>Guidance and support for obtaining necessary approvals for foreign investment.</p>
-                      </li>
-                       
-                       <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Business Planning & Strategy</h4>
-                          <p>Helping businesses develop sound financial plans and strategies for growth.</p>
-                      </li>
-                      </ul>
-              </div>
-
-               <div data-aos="fade-left" data-aos-delay="100">
-                  <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b border-gray-300 pb-3">Other Services</h3>
-                   <ul class="space-y-4 text-gray-700">
-                      <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Accounting & Bookkeeping</h4>
-                          <p>Maintaining accurate financial records and statements.</p>
-                      </li>
-                       <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Payroll Processing</h4>
-                          <p>Managing employee payroll accurately and on time.</p>
-                      </li>
-                       <li>
-                          <h4 class="text-xl font-medium text-gray-900 mb-1">Due Diligence</h4>
-                          <p>Comprehensive financial investigation for mergers, acquisitions, or investments.</p>
-                      </li>
-                      </ul>
-              </div>
-
+           <div class="text-center mt-12">
+              <a href="#" class="inline-block bg-brand-blue text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-800 transition duration-300 ease-in-out">
+                  View All Posts
+              </a>
           </div>
       </div>
   </section>
@@ -199,6 +150,8 @@
       © 2025 BNM & Co. All rights reserved.
     </div>
   </footer>
+  
+  
 
   <script>
     // Mobile menu toggle
@@ -220,6 +173,48 @@
       });
     } else {
       console.error('AOS library not loaded.');
+    }
+
+    // --- Dark Mode Toggle ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const body = document.body;
+    const darkModeClass = 'dark-mode'; // Class to apply for dark mode
+
+    // Check local storage for theme preference on load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add(darkModeClass);
+        updateThemeToggleIcon(true); // Update icon to sun
+    } else {
+        updateThemeToggleIcon(false); // Update icon to moon
+    }
+
+    // Function to toggle theme and update icon
+    function toggleTheme() {
+        body.classList.toggle(darkModeClass);
+        let isDarkMode = body.classList.contains(darkModeClass);
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        updateThemeToggleIcon(isDarkMode);
+    }
+
+    // Function to update the theme toggle icon
+    function updateThemeToggleIcon(isDarkMode) {
+        const icon = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+        if (themeToggle) {
+            themeToggle.querySelector('i').className = icon + ' text-xl';
+        }
+         if (themeToggleMobile) {
+            themeToggleMobile.querySelector('i').className = icon + ' text-xl';
+        }
+    }
+
+    // Add event listeners to the toggle buttons
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+     if (themeToggleMobile) {
+        themeToggleMobile.addEventListener('click', toggleTheme);
     }
 
   </script>
