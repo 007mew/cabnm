@@ -1,223 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Articles & News - BNM & Co</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-   
-  <link rel="stylesheet" href="styles.css"> 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Articles & News - BNM & Co</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-  <style>
-    /* Custom CSS for subtle animations and responsive iframe */
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    .animate-fadeIn {
-      animation: fadeIn 1s ease-out;
-    }
-    /* Custom color definition for easier use */
-    .text-brand-blue { color: #0e2463; }
-    .bg-brand-blue { background-color: #0e2463; }
-    .hover\:text-brand-blue:hover { color: #0e2463; }
+    <link rel="stylesheet" href="styles.css">
 
-    
+    <style>
+        /* Custom CSS for subtle animations and responsive iframe */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out;
+        }
+        /* Custom color definition for easier use */
+        .text-brand-blue { color: #0e2463; }
+        .bg-brand-blue { background-color: #0e2463; }
+        .hover\:text-brand-blue:hover { color: #0e2463; }
 
-  </style>
+        /* Popup Styles */
+        #articlePopup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 50; /* Ensure it's on top */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #articlePopup.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #articlePopup > div {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            max-width: 80%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        #closePopupBtn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            color: gray;
+        }
+
+        #closePopupBtn:hover {
+            color: black;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-  <header class="bg-white bg-opacity-80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-3">
-        <img src="assets/images/logo.png" alt="Logo" class="w-50 h-20 rounded-full ">
-      </div>
-      <nav 
-    class="hidden md:flex space-x-2 winky-rough-regular">
-    <a href="index.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Home</a>
-    <a href="about.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">About</a>
-    <a href="services.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Services</a>
-    <a href="testimonials.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Testimonials</a>
-    <a href="contact.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold 
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Contact</a>
-    <a href="Articles.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold   
-    bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
-    shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Articles</a>
+    <header class="bg-white bg-opacity-80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="assets/images/logo.png" alt="Logo" class="w-50 h-20 rounded-full ">
+            </div>
+            <nav
+                class="hidden md:flex space-x-2 winky-rough-regular">
+                <a href="index.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold
+                bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+                shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Home</a>
+                <a href="about.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold
+                bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+                shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">About</a>
+                <a href="services.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold
+                bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+                shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Services</a>
+                <a href="testimonials.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold
+                bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+                shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Testimonials</a>
+                <a href="contact.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold
+                bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+                shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Contact</a>
+                <a href="Articles.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold
+                bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+                shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Articles</a>
+                <a href="/admin-panel/views/login.html" class="px-4 py-2 rounded-xl border-0 border-blue-400 text-Black-400 font-semibold
+                bg-white/5 hover:bg-grey-400 hover:text-black transition-all duration-300
+                shadow-md hover:shadow-cyan-400/60 transform hover:scale-105">Admin Login</a>
+            </nav>
 
-  </nav>
+            <div class="md:hidden flex items-center">
+                <button id="menu-toggle" class="text-gray-600 focus:outline-none hover:text-brand-blue transition duration-300 ease-in-out">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
 
-      <div class="md:hidden flex items-center">
-        <button id="theme-toggle-mobile" class="text-gray-600 focus:outline-none hover:text-brand-blue transition duration-300 ease-in-out mr-4" aria-label="Toggle theme">
-             <i class="fas fa-moon text-xl"></i> </button>
-        <button id="menu-toggle" class="text-gray-600 focus:outline-none hover:text-brand-blue transition duration-300 ease-in-out">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 bg-white shadow-md">
+            <a href="index.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Home</a>
+            <a href="about.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">About</a>
+            <a href="services.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Services</a>
+            <a href="testimonials.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Testimonials</a>
+            <a href="contact.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Contact</a>
+            <a href="Articles.html" class="block py-2 text-brand-blue font-semibold transition duration-300 ease-in-out">Articles</a>
+            <a href="/admin-panel/views/login.html" class="block py-2 text-brand-blue font-semibold transition duration-300 ease-in-out">Admin Login</a>
+        </div>
+    </header>
+
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 noto-sans-bold">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Articles by B N Mishra</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                    Stay updated with the latest financial news, insights, and updates from BNM & Co.
+                </p>
+            </div>
+
+            <div id="articlesList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-brand-blue text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-800 transition duration-300 ease-in-out">
+                    View All Posts
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-4 lg:py-5 mt-auto winky-rough-regular">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12" data-aos="fade-up">
+            <div>
+                <h2 class="text-2xl font-bold mb-2 border-b border-blue-700 pb-1 inline-block">BNM & Co</h2>
+                <p class="mt-2 text-sm text-gray-300">Your Finances, Our Priority. Dedicated to providing expert financial guidance and services.</p>
+            </div>
+            <div>
+                <h3 class="text-lg text-white font-semibold mb-2 border-b border-blue-700 pb-1 inline-block">Company</h3>
+                <ul class="space-y-1 text-sm">
+                    <li><a href="about.html" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">About Us</a></li>
+                    <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Our Team</a></li>
+                    <li><a href="contact.html" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg text-white font-semibold mb-2 border-b border-blue-700 pb-1 inline-block">Resources</h3>
+                <ul class="space-y-1 text-sm">
+                    <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Articles</a></li>
+                    <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Webinars</a></li>
+                    <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Guides</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pt-4 text-center text-sm text-gray-400">
+            © 2025 BNM & Co. All rights reserved.
+        </div>
+    </footer>
+
+    <div id="articlePopup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center hidden">
+        <div class="bg-white rounded-lg p-8 max-w-2xl relative">
+            <button id="closePopupBtn" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 id="popupArticleTitle" class="text-2xl font-bold text-gray-900 mb-4"></h2>
+            <div id="popupArticleContent" class="text-gray-800"></div>
+            <p id="popupArticleDate" class="text-sm text-gray-600 mt-4"></p>
+        </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 bg-white shadow-md">
-      <a href="index.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Home</a>
-      <a href="about.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">About</a>
-      <a href="services.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Services</a>
-      <a href="testimonials.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Testimonials</a>
-      <a href="contact.html" class="block py-2 text-gray-700 hover:text-brand-blue font-medium transition duration-300 ease-in-out">Contact</a>
-      <a href="Articles.html" class="block py-2 text-brand-blue font-semibold transition duration-300 ease-in-out">Articles</a>
-    </div>
-  </header>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const menuToggle = document.getElementById("menu-toggle");
+            const mobileMenu = document.getElementById("mobile-menu");
 
-  <section class="py-16 lg:py-24 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 noto-sans-bold">
-          <div class="text-center mb-12" data-aos="fade-up">
-              <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Articles by B N Mishra</h2>
-              <p class="text-lg text-gray-700 max-w-3xl mx-auto">
-                  Stay updated with the latest financial news, insights, and updates from BNM & Co.
-              </p>
-          </div>
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener("click", () => {
+                    mobileMenu.classList.toggle("hidden");
+                });
+            }
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
-                  <div class="bg-gray-300 h-40 rounded-md mb-4"></div> <h3 class="text-xl font-semibold text-gray-900 mb-2">[Articles Post Title]</h3>
-                  <p class="text-sm text-gray-600 mb-3">Published on [Date]</p>
-                  <p class="text-gray-700 text-sm mb-4">[Brief excerpt of the Articles post content.]</p>
-                  <a href="#" class="text-brand-blue hover:underline font-medium">Read More &rarr;</a>
-              </div>
-               <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
-                  <div class="bg-gray-300 h-40 rounded-md mb-4"></div> <h3 class="text-xl font-semibold text-gray-900 mb-2">[Articles Post Title]</h3>
-                  <p class="text-sm text-gray-600 mb-3">Published on [Date]</p>
-                  <p class="text-gray-700 text-sm mb-4">[Brief excerpt of the Articles post content.]</p>
-                  <a href="#" class="text-brand-blue hover:underline font-medium">Read More &rarr;</a>
-              </div>
-               <div class="bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
-                  <div class="bg-gray-300 h-40 rounded-md mb-4"></div> <h3 class="text-xl font-semibold text-gray-900 mb-2">[Articles Post Title]</h3>
-                  <p class="text-sm text-gray-600 mb-3">Published on [Date]</p>
-                  <p class="text-gray-700 text-sm mb-4">[Brief excerpt of the Articles post content.]</p>
-                  <a href="#" class="text-brand-blue hover:underline font-medium">Read More &rarr;</a>
-              </div>
-              </div>
+            // Initialize AOS if the library is loaded
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000, // Animation duration slightly faster
+                    easing: 'ease-in-out', // Animation easing
+                    once: true, // Whether animation should happen only once
+                });
+            } else {
+                console.error('AOS library not loaded.');
+            }
 
-           <div class="text-center mt-12">
-              <a href="#" class="inline-block bg-brand-blue text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-800 transition duration-300 ease-in-out">
-                  View All Posts
-              </a>
-          </div>
-      </div>
-  </section>
+            const articlesListDiv = document.getElementById('articlesList');
+            const articlePopup = document.getElementById('articlePopup');
+            const closePopupBtn = document.getElementById('closePopupBtn');
+            const popupArticleTitle = document.getElementById('popupArticleTitle');
+            const popupArticleContent = document.getElementById('popupArticleContent');
+            const popupArticleDate = document.getElementById('popupArticleDate');
 
+            // Function to open the popup and populate content
+            const openPopup = (article) => {
+                popupArticleTitle.textContent = article.title;
+                popupArticleContent.innerHTML = article.fullContent || article.content; // Adjust based on your API response
+                popupArticleDate.textContent = `Published on ${new Date(article.createdAt).toLocaleDateString()}`;
+                articlePopup.classList.add('open');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling behind the popup
+            };
 
-  <footer class="bg-black text-white py-4 lg:py-5 mt-auto winky-rough-regular">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12" data-aos="fade-up">
-      <div>
-        <h2 class="text-2xl font-bold mb-2 border-b border-blue-700 pb-1 inline-block">BNM & Co</h2>
-        <p class="mt-2 text-sm text-gray-300">Your Finances, Our Priority. Dedicated to providing expert financial guidance and services.</p>
-      </div>
-      <div>
-        <h3 class="text-lg text-white font-semibold mb-2 border-b border-blue-700 pb-1 inline-block">Company</h3>
-        <ul class="space-y-1 text-sm">
-          <li><a href="about.html" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">About Us</a></li>
-          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Our Team</a></li>
-          <li><a href="contact.html" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-lg text-white font-semibold mb-2 border-b border-blue-700 pb-1 inline-block">Resources</h3>
-        <ul class="space-y-1 text-sm">
-          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Articles</a></li>
-          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Webinars</a></li>
-          <li><a href="#" class="hover:underline text-gray-300 hover:text-white transition duration-300 ease-in-out">Guides</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pt-4 text-center text-sm text-gray-400">
-      © 2025 BNM & Co. All rights reserved.
-    </div>
-  </footer>
-  
-  
+            // Function to close the popup
+            const closePopup = () => {
+                articlePopup.classList.remove('open');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            };
 
-  <script>
-    // Mobile menu toggle
-    const menuToggle = document.getElementById("menu-toggle");
-    const mobileMenu = document.getElementById("mobile-menu");
+            // Event listener for closing the popup
+            closePopupBtn.addEventListener('click', closePopup);
+            articlePopup.addEventListener('click', (event) => {
+                if (event.target === articlePopup) { // Close if clicked outside the content area
+                    closePopup();
+                }
+            });
 
-    if (menuToggle && mobileMenu) {
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    }
+            // Fetch articles from the backend
+            fetch('https://cabnm-backend.onrender.com/api/articles')
 
-    // Initialize AOS if the library is loaded
-    if (typeof AOS !== 'undefined') {
-      AOS.init({
-        duration: 1000, // Animation duration slightly faster
-        easing: 'ease-in-out', // Animation easing
-        once: true, // Whether animation should happen only once
-      });
-    } else {
-      console.error('AOS library not loaded.');
-    }
+            .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(articles => {
+                    articlesListDiv.innerHTML = '';
+                    articles.forEach(article => {
+                        const articleElement = document.createElement('div');
+                        articleElement.classList.add('bg-gray-100', 'p-6', 'rounded-lg', 'shadow-md');
+                        articleElement.innerHTML = `
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">${article.title}</h3>
+                            <p class="text-gray-700 text-sm mb-4">${article.content.substring(0, 150)}...</p>
+                            <p class="text-sm text-gray-600 mb-3">Published on ${new Date(article.createdAt).toLocaleDateString()}</p>
+                            <button class="text-brand-blue hover:underline font-medium read-more-btn" data-article-id="${article._id}">Read More &rarr;</button>
+                        `;
+                        articlesListDiv.appendChild(articleElement);
+                    });
 
-    // --- Dark Mode Toggle ---
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-    const body = document.body;
-    const darkModeClass = 'dark-mode'; // Class to apply for dark mode
-
-    // Check local storage for theme preference on load
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add(darkModeClass);
-        updateThemeToggleIcon(true); // Update icon to sun
-    } else {
-        updateThemeToggleIcon(false); // Update icon to moon
-    }
-
-    // Function to toggle theme and update icon
-    function toggleTheme() {
-        body.classList.toggle(darkModeClass);
-        let isDarkMode = body.classList.contains(darkModeClass);
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        updateThemeToggleIcon(isDarkMode);
-    }
-
-    // Function to update the theme toggle icon
-    function updateThemeToggleIcon(isDarkMode) {
-        const icon = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
-        if (themeToggle) {
-            themeToggle.querySelector('i').className = icon + ' text-xl';
-        }
-         if (themeToggleMobile) {
-            themeToggleMobile.querySelector('i').className = icon + ' text-xl';
-        }
-    }
-
-    // Add event listeners to the toggle buttons
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    }
-     if (themeToggleMobile) {
-        themeToggleMobile.addEventListener('click', toggleTheme);
-    }
-
-  </script>
+                    // Add event listeners to all "Read More" buttons after they are added to the DOM
+                    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+                    readMoreButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const articleId = this.getAttribute('data-article-id');
+                            // Find the corresponding article from the fetched data
+                            const selectedArticle = articles.find(article => article._id === articleId);
+                            if (selectedArticle) {
+                                openPopup(selectedArticle);
+                            }
+                            // Optionally, fetch the full article content here if it's not initially loaded
+                            // fetch(`http://localhost:3000/api/articles/${articleId}`)
+                            //     .then(response => response.json())
+                            //     .then(fullArticle => openPopup(fullArticle))
+                            //     .catch(error => console.error('Error fetching full article:', error));
+                        });
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching articles:', error);
+                    articlesListDiv.innerHTML = '<p class="text-red-500">Failed to load articles.</p>';
+                });
+        });
+    </script>
 
 </body>
 </html>
