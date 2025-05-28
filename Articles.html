@@ -138,7 +138,7 @@
     <section class="py-16 lg:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 noto-sans-bold">
             <div class="text-center mb-12" data-aos="fade-up">
-<!--                 <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Articles by B N Mishra</h2> -->
+                <!-- <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Articles by B N Mishra</h2> -->
                 <h2 class="text-2xl font-extrabold text-gray-900 mb-4">
                     Stay updated with the latest financial news, insights, and updates from B.N.M. & CO.
                 </h2>
@@ -194,6 +194,8 @@
             <h2 id="popupArticleTitle" class="text-2xl font-bold text-gray-900 mb-4"></h2>
             <div id="popupArticleContent" class="text-gray-800"></div>
             <p id="popupArticleDate" class="text-sm text-gray-600 mt-4"></p>
+            <p id="popupArticleAuthor" class="text-sm text-gray-600 mt-1">Published by CA bnm</p>
+
         </div>
     </div>
 
@@ -232,6 +234,7 @@
                 popupArticleTitle.textContent = article.title;
                 popupArticleContent.innerHTML = article.fullContent || article.content; // Adjust based on your API response
                 popupArticleDate.textContent = `Published on ${new Date(article.createdAt).toLocaleDateString()}`;
+                popupArticleAuthor.textContent = `Published by CA B.N. Mishra`;
                 articlePopup.classList.add('open');
                 document.body.style.overflow = 'hidden'; // Prevent scrolling behind the popup
             };
@@ -268,7 +271,10 @@
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-white shadow-md hover:shadow-lg rounded-xl px-4 py-3 border-l-4 border-brand-blue transition-all duration-300">
                     <div class="flex flex-col sm:flex-row sm:items-center gap-3">
                         <span class="text-brand-blue font-semibold text-base sm:text-lg">${article.title}</span>
-                        <span class="text-sm text-gray-500 hidden sm:inline-block">• Published on ${new Date(article.createdAt).toLocaleDateString()}</span>
+                        <span class="text-sm text-gray-500 hidden sm:inline-block">
+  • Published on ${new Date(article.createdAt).toLocaleDateString()} authored by CA B.N.Mishra
+</span>
+
                     </div>
                     <button class="px-4 py-1 rounded-full bg-brand-blue text-white text-sm font-medium hover:bg-blue-900 transition read-more-btn" data-article-id="${article._id}">
                 Read More →
