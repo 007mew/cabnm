@@ -15,6 +15,35 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
+        img, a {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+        body {
+  -webkit-user-select: none;  /* Chrome, Safari */
+  -moz-user-select: none;     /* Firefox */
+  -ms-user-select: none;      /* IE10+ */
+  user-select: none;          /* Standard */
+}
+
+    @keyframes scrollLoop {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scrollLoop {
+  animation: scrollLoop 25s linear infinite;
+}
+.animate-scrollLoop:hover {
+  animation-play-state: paused;
+}
+
+    
         /* Stylish article hover */
 #articlesList li:hover {
     transform: translateX(4px);
@@ -80,6 +109,25 @@
         #closePopupBtn:hover {
             color: black;
         }
+        #articlesList {
+          list-style: none; /* remove default bullets */
+          padding-left: 1.2em; /* space for bullet */
+}
+#articlesList li {
+  position: relative;  /* to position the bullet */
+  padding-left: 1.2em; /* space for the bullet */
+}
+
+#articlesList li::before {
+  content: '‣';
+  color: #0e2463;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
@@ -87,7 +135,7 @@
     <header class="bg-white bg-opacity-80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="assets/images/logo.png" alt="Logo" class="w-100 h-40 ">
+                <img src="/logo.png" alt="Logo" class="w-100 h-40  ">
             </div>
             <nav
                 class="hidden md:flex space-x-2 winky-rough-regular">
@@ -135,7 +183,7 @@
         </div>
     </header>
 
-    <section class="py-16 lg:py-24 bg-white">
+<section class="pt-4 lg:pt-6 pb-16 lg:pb-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 noto-sans-bold">
             <div class="text-center mb-12" data-aos="fade-up">
                 <!-- <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Articles by B N Mishra</h2> -->
@@ -144,7 +192,9 @@
                 </h2>
             </div>
 
-            <ol id="articlesList" class="space-y-6 list-decimal  ml-4 text-gray-800 font-sans text-lg"></ol>
+            <div class="relative overflow-hidden h-130"> <!-- Adjust height as needed -->
+<ul id="articlesList" class="space-y-6 ml-4 text-gray-800 font-sans text-lg flex flex-col animate-scrollLoop"></ul>
+</div>
 
                 </div>
 
@@ -263,36 +313,37 @@
                     return response.json();
                 })
                 .then(articles => {
-                    articlesListDiv.innerHTML = '';
-                    articles.forEach(article => {
-                        const articleElement = document.createElement('li');
-                        articleElement.classList.add('ml-4');
-                        articleElement.innerHTML = `
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-white shadow-md hover:shadow-lg rounded-xl px-4 py-3 border-l-4 border-brand-blue transition-all duration-300">
-                    <div class="flex flex-col sm:flex-row sm:items-center gap-3">
-                        <span class="text-brand-blue font-semibold text-base sm:text-lg">${article.title}</span>
-                        <span class="text-sm text-gray-500 hidden sm:inline-block">
-  • Published on ${new Date(article.createdAt).toLocaleDateString()} authored by CA B.N.Mishra
-</span>
+    articlesListDiv.innerHTML = '';
 
-                    </div>
-                    <button class="px-4 py-1 rounded-full bg-brand-blue text-white text-sm font-medium hover:bg-blue-900 transition read-more-btn" data-article-id="${article._id}">
-                Read More →
-            </button>
+    // Create and append articles twice for seamless scroll
+    const allArticles = [...articles, ...articles]; // duplicate
+    allArticles.forEach(article => {
+        const articleElement = document.createElement('li');
+        articleElement.classList.add('ml-4');
+        articleElement.innerHTML = `
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-white shadow-md hover:shadow-lg rounded-xl px-4 py-3 border-l-4 border-brand-blue transition-all duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+                    <span class="text-brand-blue font-semibold text-base sm:text-lg">${article.title}</span>
+                    <span class="text-sm text-gray-500 hidden sm:inline-block">
+                        • Published on ${new Date(article.createdAt).toLocaleDateString()} authored by CA B.N.Mishra
+                    </span>
+                </div>
+                <button class="px-4 py-1 rounded-full bg-brand-blue text-white text-sm font-medium hover:bg-blue-900 transition read-more-btn" data-article-id="${article._id}">
+                    Read More →
+                </button>
+            </div>
+        `;
+        articlesListDiv.appendChild(articleElement);
+    });
 
-    </div>                  `;
-                        articlesListDiv.appendChild(articleElement);
-                    });
-
-                    // Add event listeners to all "Read More" buttons after they are added to the DOM
-                    const readMoreButtons = document.querySelectorAll('.read-more-btn');
-                    readMoreButtons.forEach(button => {
-                        button.addEventListener('click', function() {
-                            const articleId = this.getAttribute('data-article-id');
-                            // Find the corresponding article from the fetched data
-                            const selectedArticle = articles.find(article => article._id === articleId);
-                            if (selectedArticle) {
-                                openPopup(selectedArticle);
+    // Add event listeners for popup
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const articleId = this.getAttribute('data-article-id');
+            const selectedArticle = articles.find(article => article._id === articleId);
+            if (selectedArticle) {
+                openPopup(selectedArticle);
                             }
                             // Optionally, fetch the full article content here if it's not initially loaded
                             // fetch(`http://localhost:3000/api/articles/${articleId}`)
@@ -307,6 +358,12 @@
                     articlesListDiv.innerHTML = '<p class="text-red-500">Failed to load articles.</p>';
                 });
         });
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('copy', event => {
+        event.preventDefault();
+});
+
+
     </script>
 
 </body>
